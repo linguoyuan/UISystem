@@ -72,7 +72,8 @@ UI由业务会分为很多层，如显示3DUI的层，显示主界面的层，�
 * InfoLayer：游戏中一些需要显示在普通界面上面的信息
 * TopLayer：顶层，显示Loading等
 * TipLayer：提示层，看情况设计，有时Loading中也需要弹出提示框等信息
-关于如何控制层级渲染顺序，SortingLayer和Order in Layer都可以，我个人喜欢所有顺序直接使用Order In Layer来管理。
+1. 关于如何控制层级渲染顺序，SortingLayer和Order in Layer都可以，我个人喜欢所有顺序直接使用Order In Layer来管理。
+2. 每个Layer层级会单独分配一个画布。
 
 ### UILayer的功能
 1. 每个界面之间可能会有特效等，为了特效不在界面中穿插，因此每个界面都需要单独设置Order In Layer并且两个界面之间需要预留一定的空间，用来避免特效在界面中的穿插问题，这算是我见过比较常规的做法，但是这种做法还是比较麻烦，最好的方式是使用继承MaskableGraphic实现UI层面的粒子特效，推荐[UI Particle Image](https://assetstore.unity.com/packages/tools/gui/ui-particle-image-235001)插件，实现了UI粒子特效，就不用在意其在UI中穿插的问题，这看项目通常项目的特效不了解这个因此还是会使用常规粒子特效做法，因此我们每个Layer中还是需要管理这个渲染层级。
